@@ -20,10 +20,10 @@ class ContactController extends Controller
     }
 
     // 確認画面
-    public function confirm(Request $requesr)
+    public function confirm(Request $request)
     {
         $hash = array(
-            'request' => '$request',
+            'request' => $request,
             'title' => 'お問い合わせ',
             'subtitle' => '確認画面',
         );
@@ -32,11 +32,12 @@ class ContactController extends Controller
     }
 
     // 完了画面
-    public function finish(Request　$request)
+    public function finish(Request $request)
     {
         $contact = $request;
 
         Mail::to($contact->email)->send(new ContactMail($contact));
+        // Mail::to($contact->email)->send(new \App\Mail\ContactMail($contact));
 
         $hash = array(
             'title' => 'お問い合わせ',
