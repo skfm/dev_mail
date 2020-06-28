@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('contact/', 'ContactController@input'); // 入力画面
+Route::patch('contact/', 'ContactController@confirm'); // 確認画面
+Route::post('contact/', 'ContactController@finish'); // 完了画面
